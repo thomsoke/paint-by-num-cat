@@ -18,15 +18,8 @@ function generateTable() {
   table.style.width = '600px'
   table.style.border = '3px solid black'
 
-  // table.style.columnWidth = "300px";
-  // table.style.columnHeight = "600px";
-  // document.getElementById("myDIV").style.columnWidth = "100px";
-
   var tr = document.createElement('TR')
   tableBody.appendChild(tr)
-
-  // tr.style.height = '500px'
-
 
   addTableData(table)
 
@@ -139,7 +132,9 @@ function markCell(color) {
 
 
 
-
+// will allow user to toggle the letters in the cells on and off
+// user can use this to make sure they filled in cells correctly
+// will make final picture look all nicey-nice
 // /////////////////////////////////////////////////////////
 // function addText() {
 //
@@ -161,22 +156,6 @@ function markCell(color) {
 //
 // }
 
-// /////////////////////////////////////////////////////////
-// function generateTextButton() {
-//   var button = document.createElement("BUTTON")
-//   button.id = 'textButton'
-//   // button.innerHTML = "MARK " + backgroundColor.toUpperCase()
-//   button.innerHTML = "ADD TEXT BACK TO ALL CELLS"
-//   button.style.background = '#51efff'
-//   button.style.fontFamily = "Comic Sans MS,Charcoal,sans-serif"
-//   button.style.color = 'black'
-//
-//   document.body.appendChild(button)
-//   button.addEventListener("click", function(event) {
-//     // addText()
-//   })
-// }
-
 
 /////////////////////////////////////////////////////////
 function generateTextButton(backgroundColor, textColor) {
@@ -193,7 +172,7 @@ function generateTextButton(backgroundColor, textColor) {
   })
 }
 
-
+// currently only adds text back to current cell... it's a start
 /////////////////////////////////////////////////////////
 function addTextToCell() {
   var cellToMark = getCurrentCell()
