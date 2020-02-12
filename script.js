@@ -18,8 +18,15 @@ function generateTable() {
   table.style.width = '600px'
   table.style.border = '3px solid black'
 
+  // table.style.columnWidth = "300px";
+  // table.style.columnHeight = "600px";
+  // document.getElementById("myDIV").style.columnWidth = "100px";
+
   var tr = document.createElement('TR')
   tableBody.appendChild(tr)
+
+  // tr.style.height = '500px'
+
 
   addTableData(table)
 
@@ -68,9 +75,12 @@ function addTableData(table) {
 
   for (var i = 0; i < data.length; i++) {
     var tr = table.insertRow(-1)
+    tr.style.height = '25px'
 
     for(var j = 0; j < data[i].length; j++) {
       var td = tr.insertCell(-1)
+    //  td.style.height = '20px'
+
       td.setAttribute("id", `row-${i}-column-${j}`)
       td.setAttribute("class", `row-${i}`)
       td.setAttribute("class", `column-${j}`)
@@ -79,7 +89,6 @@ function addTableData(table) {
 
       td.style.border = '1px solid black'
       td.style.background = 'grey'
-      // td.style.background = '#dadada'
     }
   }
 }
@@ -124,9 +133,77 @@ function markCell(color) {
   var cellToMark = getCurrentCell()
   cellToMark.style.backgroundColor = color
   cellToMark.style.border = "0px solid black"
-  cellToMark.style.color = color
+  cellToMark.style.color = color    // this changes the font color to cell mark color
   selectCell(cellToMark)
 }
+
+
+
+
+// /////////////////////////////////////////////////////////
+// function addText() {
+//
+//   var cell = getCurrentCell()
+//
+//
+//
+//   for (var i = 0; i < data.length; i++) {
+//     for(var j = 0; j < data[i].length; j++) {
+//
+//       for ()
+//         if (cell === null) {
+//           return null
+//         }
+//
+//         cell.style.color = 'black'  // sets text color to black
+//     }
+//   }
+//
+// }
+
+// /////////////////////////////////////////////////////////
+// function generateTextButton() {
+//   var button = document.createElement("BUTTON")
+//   button.id = 'textButton'
+//   // button.innerHTML = "MARK " + backgroundColor.toUpperCase()
+//   button.innerHTML = "ADD TEXT BACK TO ALL CELLS"
+//   button.style.background = '#51efff'
+//   button.style.fontFamily = "Comic Sans MS,Charcoal,sans-serif"
+//   button.style.color = 'black'
+//
+//   document.body.appendChild(button)
+//   button.addEventListener("click", function(event) {
+//     // addText()
+//   })
+// }
+
+
+/////////////////////////////////////////////////////////
+function generateTextButton(backgroundColor, textColor) {
+  var button = document.createElement("BUTTON")
+  button.id = 'markCellButton'
+  button.innerHTML = "ADD OR REMOVE TEXT FROM IMAGE"
+  button.style.background = backgroundColor
+  button.style.fontFamily = "Comic Sans MS,Charcoal,sans-serif"
+  button.style.color = textColor
+
+  document.body.appendChild(button)
+  button.addEventListener("click", function(event) {
+    addTextToCell()
+  })
+}
+
+
+/////////////////////////////////////////////////////////
+function addTextToCell() {
+  var cellToMark = getCurrentCell()
+  cellToMark.style.border = "0px solid black"
+  cellToMark.style.color = 'black'    // this changes the font color to cell mark color
+  selectCell(cellToMark)
+}
+
+
+
 
 /////////////////////////////////////////////////////////
 function navigatorSupreme(keyCode) {
@@ -267,12 +344,13 @@ function handleDownPress() {
 function main() {
   document.body.style.fontFamily = "Comic Sans MS,Charcoal,sans-serif"
   generateTable()
+
+  generateTextButton("#51efff", "black")
   generateButton("white", "black")
   generateButton("black", "white")
   generateButton("pink", "white")
   generateButton("green", "white")
   generateButton("grey", "black")
-  // generateButtonRemoveData()
 
   document.addEventListener("keydown", function(event) {
     navigatorSupreme(event.keyCode)
